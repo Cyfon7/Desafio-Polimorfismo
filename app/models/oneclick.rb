@@ -1,0 +1,2 @@
+class Oneclick < Transbank
+end

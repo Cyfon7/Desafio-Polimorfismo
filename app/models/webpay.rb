@@ -1,0 +1,2 @@
+class Webpay < Transbank
+end

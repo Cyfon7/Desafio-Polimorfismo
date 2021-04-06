@@ -1,0 +1,2 @@
+class CreditCard < Transbank
+end
