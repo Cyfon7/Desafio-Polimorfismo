@@ -4,7 +4,8 @@ class CreatePayments < ActiveRecord::Migration[5.2]
       t.string :state
       t.decimal :total
       t.string :token
-      t.references :paymentable, polymorphic: true
+      t.string :type
+      #t.references :paymentable, polymorphic: true
 
       t.timestamps
     end

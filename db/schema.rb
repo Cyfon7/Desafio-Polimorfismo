@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_010247) do
+ActiveRecord::Schema.define(version: 2021_04_06_010207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_010247) do
     t.string "state"
     t.decimal "total"
     t.string "token"
-    t.string "paymentable_type"
-    t.bigint "paymentable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["paymentable_type", "paymentable_id"], name: "index_payments_on_paymentable_type_and_paymentable_id"
-  end
-
-  create_table "paypals", force: :cascade do |t|
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,17 +39,6 @@ ActiveRecord::Schema.define(version: 2021_04_06_010247) do
     t.string "name"
     t.text "description"
     t.float "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "stripes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "transbanks", force: :cascade do |t|
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

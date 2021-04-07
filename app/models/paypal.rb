@@ -1,3 +1,3 @@
-class Paypal < ApplicationRecord
-    has_many :payments, as: :paymentable
+class Paypal < Payment #ApplicationRecord
+    #has_many :payments, as: :paymentable
 end
