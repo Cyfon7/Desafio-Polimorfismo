@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 2021_04_07_150139) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "digitals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "name"
     t.string "url"
@@ -63,15 +68,22 @@ ActiveRecord::Schema.define(version: 2021_04_07_150139) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "physicals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
-    t.string "type"
     t.string "name"
     t.text "description"
     t.decimal "price"
     t.string "sku"
     t.integer "stock"
+    t.string "productable_type"
+    t.bigint "productable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["productable_type", "productable_id"], name: "index_products_on_productable_type_and_productable_id"
   end
 
   create_table "users", force: :cascade do |t|

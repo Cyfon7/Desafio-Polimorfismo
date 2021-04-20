@@ -7,5 +7,13 @@ class CreateImages < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    create_table :digitals do |t|
+      t.timestamps
+    end
+
+    create_table :physicals do |t|
+      t.timestamps
+    end
   end
 end

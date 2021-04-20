@@ -1,0 +1,10 @@
+<%= form_for :cart, url: pay_cart_url, method: :post do |f| %>
+    
+    <%= f.label :payment_method %>
+    <%= f.select :payment_method, ["Stripe", "Paypal", "Transbank - Webpay", "Transbank - Oneclick", "Transbank - CreditCard"] %>
+
+
+
+    <%= f.hidden_field :order_id, value: @order.id %>
+    <%= f.submit "Pay" %>
+<% end %>

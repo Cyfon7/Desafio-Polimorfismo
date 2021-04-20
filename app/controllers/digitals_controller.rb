@@ -1,0 +1,2 @@
+class DigitalsController < ProductsController
+end

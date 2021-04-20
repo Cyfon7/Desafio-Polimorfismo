@@ -10,8 +10,51 @@
       </ul>
     </div>
   <% end %>
+ 
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.select :type, ["Physical", "Digital"] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sku %>
+    <%= form.text_field :sku %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stock %>
+    <%= form.number_field :stock %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="form-row">
+    <div id="images">
+      <%= form.fields_for :images do |image| %>
+        <%= render "images_fields", f: image %>
+      <% end %>
+      <div class="links my-3">  
+        <%= link_to_add_association form, :images, partial: 'products/images_fields' do %>
+          <span class="pl-1"><i class="fas fa-plus-square fa-2x"></i>  Add image</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Edit Product' %>
   </div>
 <% end %>

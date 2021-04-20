@@ -14,7 +14,7 @@ class CartsController < ApplicationController
     @order = current_order
   end
   
-  def pay_with_paypal
+  def pay
     order = Order.find(params[:cart][:order_id])
   
     #price must be in cents
@@ -22,7 +22,7 @@ class CartsController < ApplicationController
   
     response = EXPRESS_GATEWAY.setup_purchase(price,
       ip: request.remote_ip,
-      return_url: process_paypal_payment_cart_url,
+      return_url: process_payment_cart_url,
       cancel_return_url: root_url,
       allow_guest_checkout: true,
       currency: "USD"
@@ -30,8 +30,8 @@ class CartsController < ApplicationController
   
   # payment_method = PaymentMethod.find_by(code: "PEC")
     Payment.create(
-  #    order_id: order.id,
-  #   payment_method_id: payment_method.id,
+      order_id: order.id,
+      type: params[:payment_method],
       state: "processing",
       total: order.total,
       token: response.token
@@ -40,7 +40,7 @@ class CartsController < ApplicationController
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
   
-  def process_paypal_payment
+  def process_payment
     details = EXPRESS_GATEWAY.details_for(params[:token])
     express_purchase_options =
       {

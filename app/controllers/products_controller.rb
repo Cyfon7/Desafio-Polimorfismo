@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.order(id: :asc)
   end
 
   # GET /products/1
@@ -69,6 +69,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :stock, :price, :sku, {category_ids: []})
+      params.require(:product).permit(:name, :description, :stock, :price, :sku, :type, images_attributes: [:name, :url, :_destroy])
     end
 end

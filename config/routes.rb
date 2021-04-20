@@ -4,13 +4,20 @@ Rails.application.routes.draw do
 
   #authenticate :admin do
     resources :payments
-    resources :images
+
     resources :products
+    resources :images
+    
+
+    resources :digitals, path: :products
+    resources :physicals, path: :products
+    
+
   #end
 
   resource :cart, only: [:show, :update] do
     member do
-      post :pay_with_paypal
+      post :pay
       get  :process_paypal_payment
     end
   end

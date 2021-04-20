@@ -1,0 +1,19 @@
+<div class="nested-fields form-inline my-2" >
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.url_field :url %>
+  </div>
+    
+  <% if @product.type == "Physical" %>
+    <%= link_to_remove_association f do %>
+        <i class="fas fa-minus-square fa-2x"></i>
+    <% end %>
+  <% end %>
+
+</div>
