@@ -1,4 +1,6 @@
-class Digital < ApplicationRecord#Product
+class Digital < Product
     has_one :image, as: :imageable
-    has_many :products, as: :productable
+
+    accepts_nested_attributes_for :image
+
 end

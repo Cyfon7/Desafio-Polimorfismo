@@ -1,2 +1,0 @@
-class PhysicalsController < ProductsController
-end

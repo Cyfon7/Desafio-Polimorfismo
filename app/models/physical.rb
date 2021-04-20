@@ -1,4 +1,5 @@
-class Physical < ApplicationRecord#Product
+class Physical < Product
     has_many :images, as: :imageable
-    has_many :products, as: :productable
+
+    accepts_nested_attributes_for :images
 end

@@ -17,8 +17,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :type %>
-    <%= form.select :type, ["Physical", "Digital"] %>
+    <%#= form.label :type %>
+    <%#= form.select :type, ["Physical", "Digital"] %>
+    <%= form.hidden_field :type, value: params[:type] %>
   </div>
 
   <div class="field">
@@ -43,18 +44,26 @@
 
   <div class="form-row">
     <div id="images">
-      <%= form.fields_for :images do |image| %>
-        <%= render "images_fields", f: image %>
+      <% if @product.type == "Physical" %>  
+        <%= form.fields_for :images do |image| %>
+          <%= render "images_fields", f: image %>
+        <% end %>
+      <% else %>
+        <%= form.fields_for :image do |image| %>
+          <%= render "images_fields", f: image %>
+        <% end %>
       <% end %>
-      <div class="links my-3">  
-        <%= link_to_add_association form, :images, partial: 'products/images_fields' do %>
-          <span class="pl-1"><i class="fas fa-plus-square fa-2x"></i>  Add image</span>
+      <div class="links my-3">
+        <% if @product.type == "Physical" %>  
+          <%= link_to_add_association form, :images, partial: 'products/images_fields' do %>
+            <span class="pl-1"><i class="fas fa-plus-square fa-2x"></i>  Add image</span>
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Edit Product' %>
+    <%= form.submit 'Create Product' %>
   </div>
 <% end %>

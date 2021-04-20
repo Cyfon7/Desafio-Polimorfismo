@@ -1,2 +1,0 @@
-class DigitalsController < ProductsController
-end

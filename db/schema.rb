@@ -74,16 +74,14 @@ ActiveRecord::Schema.define(version: 2021_04_07_150139) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.integer "type"
     t.string "name"
     t.text "description"
     t.decimal "price"
     t.string "sku"
     t.integer "stock"
-    t.string "productable_type"
-    t.bigint "productable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["productable_type", "productable_id"], name: "index_products_on_productable_type_and_productable_id"
   end
 
   create_table "users", force: :cascade do |t|

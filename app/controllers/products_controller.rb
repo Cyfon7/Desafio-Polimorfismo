@@ -14,7 +14,12 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    if params[:type] == 'Physical'
+      @product = Physical.new
+    else
+      @product = Digital.new
+      @product.image= Image.new
+    end
   end
 
   # GET /products/1/edit
@@ -24,7 +29,11 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    if params[:digital]
+      @product = Digital.new(product_params)
+    else
+      @product = Physical.new(product_params)
+    end
 
     respond_to do |format|
       if @product.save
@@ -69,6 +78,10 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :stock, :price, :sku, :type, images_attributes: [:name, :url, :_destroy])
+      if params[:physical]
+        params.require(:physical).permit(:name, :description, :stock, :price, :sku, :type, images_attributes: [:name, :url, :_destroy])
+      else
+        params.require(:digital).permit(:name, :description, :stock, :price, :sku, :type, image_attributes: [:name, :url, :_destroy])
+      end
     end
 end

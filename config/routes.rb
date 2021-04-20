@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   #authenticate :admin do
     resources :payments
 
-    resources :products
-    resources :images
+    resources :products do
+      resources :images
+    end
     
 
     resources :digitals, path: :products
     resources :physicals, path: :products
-    
 
   #end
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get  :process_paypal_payment
     end
   end
+
 
   root to: "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
