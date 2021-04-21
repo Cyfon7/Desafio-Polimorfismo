@@ -1,6 +1,6 @@
 class CreditCard < Transbank
     #has_many :transbanks, as: :transbankable
     def type
-        @type = "Transbank - CreditCard"
+        @payment.type << " - CreditCard"
     end
 end

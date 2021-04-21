@@ -1,8 +1,14 @@
-class Transbank < Payment #ApplicationRecord
+class Transbank < Payment#ApplicationRecord
     #has_many :payments, as: :paymentable
     #belongs_to :transbankable, polymorphic: true
-    def transbank_test
-        @transbank_test = "Esto es un test"
+    attr_accessor :payment
+
+    def initialize(payment)
+      @payment = payment
+    end
+    
+    def type
+      @payment.type = self.class.name
     end
 
 end

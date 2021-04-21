@@ -1,6 +1,6 @@
 class Oneclick < Transbank
     #has_many :transbanks, as: :transbankable
     def type
-        @type = "Transbank - Oneclick"
+        @payment.type << " - OneClick"
     end
 end
