@@ -72,7 +72,7 @@ class AnimalsController < ApplicationController
           end
         end
       end
-      return nil
+      return "animal"
     end
 
     def animal_params

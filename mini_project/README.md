@@ -92,7 +92,7 @@ def get_param
       end
     end
   end
-  return nil
+  return "animal"
 end
 ```
 3. Modify the method *animal_params* to keep the code generic
