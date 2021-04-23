@@ -1,4 +1,29 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
+<%= render "carts/process_payment" %>
+
+<p>
+    <strong>State: </strong>
+    <%= @payment.state %>
+</p>
+
+<p>
+    <strong>Total: </strong>
+    <%= @payment.total %>
+</p>
+
+<p>
+    <strong>Token: </strong>
+    <%= @payment.token %>
+</p>
+
+<p>
+    <strong>Type: </strong>
+    <%= @payment.type %>
+</p>
+
+
+<!--
 <%= link_to 'Edit', edit_payment_path(@payment) %> |
 <%= link_to 'Back', payments_path %>
+-->

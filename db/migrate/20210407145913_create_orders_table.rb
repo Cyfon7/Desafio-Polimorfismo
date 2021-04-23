@@ -8,5 +8,8 @@ class CreateOrdersTable < ActiveRecord::Migration[5.2]
 
       t.timestamp
     end
+
+    add_reference :payments, :order, index: true
   end
+
 end
